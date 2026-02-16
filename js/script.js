@@ -5,6 +5,7 @@ console.log('🟢 yes, it is');
 const countdownEl = document.getElementById('countdown');
 const instructionsEl = document.getElementById('instructions');
 const numbersListEl = document.getElementById('numbers-list');
+const formEl = document.getElementById('answers-form');
 /* DUBBIO: 👇 forse vanno presi singolarmente (es. ennesimo child di 🤔) */
 const userInputsEl = document.querySelector('div.input-group > input.form-control');
 const buttonEl = document.querySelector('button');
@@ -17,21 +18,36 @@ const memorizedNumbs = [/* Qui recupera elementi comuni */];
 
 
 /* Genero 5 numeri casuali */
-/* - salvo i 5 valori in un array ('randoNumbs')
-     (dopo mi servono per il confronto) */
+for(i = 1; i <= 5; i++){
+  number = getRandomNumbBetween(1, 50);
+  console.log(number);
 
+  /* - salvo i 5 valori in un array ('randoNumbs')
+       (dopo mi servono per il confronto) */
+  randoNumbs.push(number);
+  console.log(randoNumbs);  
+}
 /* Stampo in pagina i numeri casuali */
 /* nella lista 'ul.numbers-list' */
-
+for(x = 0; x < randoNumbs.length; x++){
+  numbersListEl.innerHTML += `<li>${randoNumbs[x]}</li>`;
+}
 /* (nello stesso momento)
    Parte un timer di 30 secondi */
+setTimeout(function() {
+  /* quando finiscono i 30 secondi */
+  /* - i numeri scompaiono */
+  console.log(numbersListEl.classList);
+  numbersListEl.classList.add('d-none');
+  console.log(numbersListEl.classList);
+  
+  /* - le istruzioni (p#instructions) cambiano
+       'Inserisci i numeri che hai visto (nell'ordine che preferisci).' */
+  instructionsEl.innerText = "Inserisci i numeri che hai visto (nell'ordine che preferisci).";
+       /* - appaiono i 5 input 'form.answers-form' */
+       formEl.classList = "";
+}, 2000/* 30000 */);
 
-/* quando finiscono i 30 secondi */
-/* - i numeri scompaiono */
-/* - le istruzioni (p#instructions) cambiano
-     'Inserisci i numeri che hai visto (nell'ordine che preferisci).' */
-
-     /* - appaiono i 5 input 'form.answers-form' */
 
 /* - al CLICK del bottone 'button' */
 /* -- controllo che non ci siano duplicati */ // ✨ BONUS
