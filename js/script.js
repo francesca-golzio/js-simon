@@ -18,6 +18,8 @@ const randoNumbs = [];
 const userNumbs = [/* Qui recupera valori inseriti */];
 const memorizedNumbs = [/* Qui recupera elementi comuni */];
 
+let guessedNumbAmountEl;
+
 
 
 /* Genero 5 numeri casuali */
@@ -40,7 +42,7 @@ setTimeout(function() {
   /* quando finiscono i 30 secondi */
   /* - i numeri scompaiono */
   //console.log(numbersListEl.classList);
-  numbersListEl.classList.add('d-none'); /* ⚠️da riattivare */
+  numbersListEl.classList.add('d-none'); 
   //console.log(numbersListEl.classList);
   
   /* - le istruzioni (p#instructions) cambiano
@@ -48,7 +50,7 @@ setTimeout(function() {
   instructionsEl.innerText = "Inserisci i numeri che hai visto (nell'ordine che preferisci).";
        /* - appaiono i 5 input 'form.answers-form' */
        formEl.classList = "";
-}, 3000/* 30000 ⚠️ da risettare*/);
+}, 30000);
 
 /* - al CLICK del bottone 'button' */
 buttonEl.addEventListener('click', function(e) {
@@ -77,17 +79,17 @@ for(i=0; i < randoNumbs.length; i++) {
     /* - salvo i numeri comuni in un nuovo array 'memorizedNumbs' */
     if(randoNumbs[i] == userNumbs[y]) {
       memorizedNumbs.push(userNumbs[y]);
-      console.log(randoNumbs[i], userNumbs[y], memorizedNumbs);      
+      //console.log(randoNumbs[i], userNumbs[y], memorizedNumbs);      
     }
-  }
-
-/* stampo in pagina (in p.message) */
-/* - quanti numeri (memorizedNumbs.lenght) sono stati memorizzati correttamente */
-/* - e quali sono questi numeri (array memorizedNumbs) */
-
+  }    
 }
-
+/* stampo in pagina (in p.message) */
+guessedNumbAmountEl = memorizedNumbs.length;
+/* - quanti numeri sono stati memorizzati correttamente 👇 */
+messageEl.innerText = `Numeri ricordati correttamente: ${ guessedNumbAmountEl} (${memorizedNumbs})`
+/* - e ☝️ quali sono */
 })
+
 
 
 
