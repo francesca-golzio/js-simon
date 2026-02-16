@@ -40,7 +40,7 @@ setTimeout(function() {
   /* quando finiscono i 30 secondi */
   /* - i numeri scompaiono */
   //console.log(numbersListEl.classList);
-  numbersListEl.classList.add('d-none');
+  numbersListEl.classList.add('d-none'); /* ⚠️da riattivare */
   //console.log(numbersListEl.classList);
   
   /* - le istruzioni (p#instructions) cambiano
@@ -48,7 +48,7 @@ setTimeout(function() {
   instructionsEl.innerText = "Inserisci i numeri che hai visto (nell'ordine che preferisci).";
        /* - appaiono i 5 input 'form.answers-form' */
        formEl.classList = "";
-}, 2000/* 30000 */);
+}, 3000/* 30000 ⚠️ da risettare*/);
 
 /* - al CLICK del bottone 'button' */
 buttonEl.addEventListener('click', function(e) {
@@ -71,13 +71,21 @@ e.preventDefault();
 
 /* - controllo la corrispondenza tra numeri mostrati e inseriti 
 ovvero, controllo se i due array hanno elementi comuni
-- NB. l'utente può inserire i numeri in un ordine qualsiasi
-*/
-/* - salvo i numeri comuni in un nuovo array 'memorizedNumbs' */
+- NB. l'utente può inserire i numeri in un ordine qualsiasi */
+for(i=0; i < randoNumbs.length; i++) {
+  for(y=0; y < userNumbs.length; y++) {
+    /* - salvo i numeri comuni in un nuovo array 'memorizedNumbs' */
+    if(randoNumbs[i] == userNumbs[y]) {
+      memorizedNumbs.push(userNumbs[y]);
+      console.log(randoNumbs[i], userNumbs[y], memorizedNumbs);      
+    }
+  }
 
 /* stampo in pagina (in p.message) */
 /* - quanti numeri (memorizedNumbs.lenght) sono stati memorizzati correttamente */
 /* - e quali sono questi numeri (array memorizedNumbs) */
+
+}
 
 })
 
